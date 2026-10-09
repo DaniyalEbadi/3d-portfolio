@@ -59,7 +59,7 @@ export const HeroText: FC = () => {
         <div className="reveal" style={delay(0.26)}>
           <FlipWords
             words={[...FLIP_WORDS]}
-            className="font-black text-white text-7xl lg:text-8xl"
+            className="font-black text-white text-4xl lg:text-5xl"
           />
         </div>
 
@@ -102,7 +102,7 @@ export const HeroText: FC = () => {
         <div className="reveal" style={delay(0.26)}>
           <FlipWords
             words={[...FLIP_WORDS]}
-            className="font-bold text-white text-5xl"
+            className="font-bold text-white text-3xl"
           />
         </div>
 

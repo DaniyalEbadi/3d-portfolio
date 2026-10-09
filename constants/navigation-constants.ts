@@ -3,6 +3,7 @@ export const NAV_ITEMS = [
   { label: "درباره من", href: "#about" },
   { label: "خدمات", href: "#services" },
   { label: "نمونه‌کارها", href: "#work" },
+  { label: "مقالات", href: "#articles" },
   { label: "تماس", href: "#contact" },
 ] as const;
 

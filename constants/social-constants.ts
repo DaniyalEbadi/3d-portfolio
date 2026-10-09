@@ -9,3 +9,5 @@ export const MY_SOCIALS: SocialLink[] = [
 ];
 
 export const CONTACT_EMAIL = "danialebadi533@gmail.com";
+
+export const CONTACT_PHONE = "09109557932";

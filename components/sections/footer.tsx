@@ -3,7 +3,7 @@
 import { useRef, type FC } from "react";
 import { motion, useInView } from "motion/react";
 import {
-  CONTACT_EMAIL,
+  CONTACT_PHONE,
   HERO_NAME,
   MY_SOCIALS,
 } from "@/constants/portfolio-constants";
@@ -40,13 +40,13 @@ export const Footer: FC = () => {
             <span>{HERO_NAME}</span>
           </div>
           <p className="mt-3 text-sm text-neutral-400 max-w-sm">
-            ساخت سرویس‌های وب و موبایلِ مقیاس‌پذیر با دقت و وسواس. برای همکاری
-            بنویسید به{" "}
+            برای همکاری با این شماره تماس بگیرید{" "}
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={`tel:${CONTACT_PHONE}`}
               className="text-white hover:text-coral transition-colors"
+              dir="ltr"
             >
-              {CONTACT_EMAIL}
+              {CONTACT_PHONE}
             </a>
           </p>
         </div>

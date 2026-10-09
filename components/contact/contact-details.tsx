@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { revealProps } from "@/animations/scroll-animations";
 import {
   CONTACT_EMAIL,
+  CONTACT_PHONE,
   HERO_LOCATION,
 } from "@/constants/portfolio-constants";
 import { ContactInfoCard } from "./contact-info-card";
@@ -29,6 +30,13 @@ export const ContactDetails: FC = () => (
         value={CONTACT_EMAIL}
         href={`mailto:${CONTACT_EMAIL}`}
         gradient="from-coral/30 to-lavender/30"
+      />
+      <ContactInfoCard
+        icon="☎"
+        label="تلفن"
+        value={CONTACT_PHONE}
+        href={`tel:${CONTACT_PHONE}`}
+        gradient="from-aqua/30 to-lavender/30"
       />
       <ContactInfoCard
         icon="⌖"

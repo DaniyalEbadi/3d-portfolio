@@ -3,6 +3,7 @@
 import { useRef, type FC } from "react";
 import { motion, useInView } from "motion/react";
 import { fadeInUp } from "@/animations/scroll-animations";
+import { TiltCard } from "@/components/ui/tilt-card";
 import { HERO_NAME } from "@/constants/hero-constants";
 
 export const AboutBio: FC = () => {
@@ -16,11 +17,12 @@ export const AboutBio: FC = () => {
       animate={inView ? "visible" : "hidden"}
       variants={fadeInUp}
       transition={{ duration: 0.7 }}
-      className="glass gradient-border p-8 md:p-10 lg:col-span-7"
+      className="lg:col-span-7"
     >
-      <h3 className="mb-4 text-2xl font-bold md:text-3xl">
-        {HERO_NAME} · تهران
-      </h3>
+      <TiltCard max={10} className="glass gradient-border p-8 md:p-10">
+        <h3 className="mb-4 text-2xl font-bold md:text-3xl">
+          {HERO_NAME} · تهران
+        </h3>
       <p className="text-base leading-relaxed text-neutral-300 md:text-lg">
         توسعه‌دهنده بک‌اند با تمرکز اصلی بر{" "}
         <span className="font-semibold text-white">Python، Django و FastAPI</span>{" "}
@@ -47,6 +49,7 @@ export const AboutBio: FC = () => {
           <span>مشاهده نمونه‌کارها</span>
         </a>
       </div>
+      </TiltCard>
     </motion.div>
   );
 };
