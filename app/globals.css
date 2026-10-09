@@ -75,15 +75,114 @@
       background-position: 200% center;
     }
   }
-
   --animate-float: float 6s ease-in-out infinite;
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
       transform: translateY(-10px);
     }
+  }
+
+  /* --- UI kit tokens (Squares / ProfileCard / NeonText / GlitchText / StarBorder) --- */
+  --color-background: #030412;
+  --color-surface: #0b0f24;
+  --color-foreground: #f5f6ff;
+  --color-muted: #9aa3b8;
+  --color-muted-2: #6b7488;
+  --color-border: rgb(255 255 255 / 0.12);
+  --color-border-strong: rgb(255 255 255 / 0.28);
+  --color-brand: #7a57db;
+  --color-brand-2: #33c2cc;
+  --color-brand-3: #ea4884;
+
+  --animate-spin-slow: spin 4s linear infinite;
+}
+
+/* Raw brand vars for components that reference them via inline styles. */
+:root {
+  --brand: #7a57db;
+  --brand-2: #33c2cc;
+  --brand-3: #ea4884;
+}
+
+/* Keyframes referenced from inline `animation:` strings in the UI kit. */
+@keyframes neon-flicker {
+  0%,
+  19%,
+  21%,
+  60%,
+  100% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.55;
+  }
+  61% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes star-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glitch-a {
+  0%,
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+    clip-path: inset(20% 0 55% 0);
+  }
+  40% {
+    transform: translate(2px, -1px);
+    clip-path: inset(60% 0 12% 0);
+  }
+  60% {
+    transform: translate(-1px, 2px);
+    clip-path: inset(35% 0 40% 0);
+  }
+  80% {
+    transform: translate(1px, -2px);
+    clip-path: inset(70% 0 8% 0);
+  }
+}
+
+@keyframes glitch-b {
+  0%,
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+  25% {
+    transform: translate(2px, -1px);
+    clip-path: inset(45% 0 30% 0);
+  }
+  45% {
+    transform: translate(-2px, 1px);
+    clip-path: inset(10% 0 70% 0);
+  }
+  65% {
+    transform: translate(1px, 2px);
+    clip-path: inset(55% 0 20% 0);
+  }
+  85% {
+    transform: translate(-1px, -2px);
+    clip-path: inset(25% 0 50% 0);
+  }
+}
+
+/* Decorative spin should not run for reduced-motion users. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow {
+    animation: none !important;
   }
 }
 

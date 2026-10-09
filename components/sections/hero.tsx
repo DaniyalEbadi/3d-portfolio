@@ -1,47 +1,61 @@
 "use client";
 
 import { type FC } from "react";
-import Image from "next/image";
-import dynamic from "next/dynamic";
+import { Squares } from "@/components/backgrounds/squares";
+import { ProfileCard } from "@/components/ui/profile-card";
 import { HeroText } from "@/components/portfolio/hero-text";
-import { ParallaxBackground } from "@/components/portfolio/parallax-background";
 import { HeroCursor } from "@/components/portfolio/hero-cursor";
-import { useDeferred3D } from "@/hooks/use-deferred-3d";
-
-const HeroScene = dynamic(
-  () => import("@/components/sections/hero-scene").then((mod) => mod.HeroScene),
-  { ssr: false }
-);
-
-// Static, feathered portrait for devices without WebGL / reduced motion, so the
-// hero still leads with the real photograph and stays fully readable.
-const HeroPortraitFallback: FC = () => (
-  <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
-    <div className="absolute left-1/2 top-1/2 h-[58vh] w-[46vh] max-w-[86vw] -translate-x-1/2 -translate-y-1/2 md:left-[27%]">
-      <div className="absolute -inset-10 rounded-full bg-lavender/20 blur-3xl" />
-      <Image
-        src="/assets/portrait.webp"
-        alt="دانیال عبادی"
-        fill
-        priority
-        sizes="(max-width: 768px) 80vw, 36vw"
-        className="object-cover object-top [mask-image:radial-gradient(ellipse_58%_68%_at_50%_40%,black_52%,transparent_84%)]"
-      />
-    </div>
-  </div>
-);
 
 export const Hero: FC = () => {
-  const showScene = useDeferred3D();
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section
       id="home"
-      className="relative flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start"
+      className="relative min-h-screen overflow-hidden bg-primary"
     >
-      <HeroText />
-      <ParallaxBackground />
-      {showScene ? <HeroScene /> : <HeroPortraitFallback />}
+      {/* Animated grid backdrop. */}
+      <Squares
+        size={28}
+        speed={0.6}
+        direction="diagonal"
+        lineColor="139,160,255"
+        hoverColor="196,181,253"
+        reach={80}
+        className="absolute inset-0 h-full w-full"
+      />
+
+      {/* RTL: first flex child sits on the right (text), second on the left
+          (profile card). On mobile only the text shows, centered. */}
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-center justify-center gap-12 px-6 py-28 md:justify-between md:px-10">
+        <div className="w-full max-w-2xl">
+          <HeroText />
+        </div>
+
+        <div className="hidden shrink-0 md:block">
+          <ProfileCard
+            name="دانیال عبادی"
+            title="برنامه نویس"
+            handle="danial"
+            status="آنلاین"
+            avatarUrl="/assets/portrait.webp"
+            showContact
+            contactLabel="پیام بده"
+            onContact={scrollToContact}
+            tilt={16}
+            sheen={0.7}
+            glare
+            behindGlow
+            color="#7a57db"
+            color2="#33c2cc"
+            radius={22}
+            className="max-w-[420px]"
+          />
+        </div>
+      </div>
+
       <HeroCursor />
 
       <a

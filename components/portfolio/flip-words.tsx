@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FC } from "react";
 import { twMerge } from "tailwind-merge";
+import { NeonText } from "@/components/text/neon-text";
 import { type FlipWordsProps } from "@/types/portfolio-types";
 
 export const FlipWords: FC<FlipWordsProps> = ({
@@ -22,7 +23,12 @@ export const FlipWords: FC<FlipWordsProps> = ({
   }, [duration, words.length]);
 
   return (
-    <span className={twMerge("relative z-10 inline-grid text-start", className)}>
+    <span
+      className={twMerge(
+        "relative z-10 inline-grid whitespace-nowrap text-start",
+        className,
+      )}
+    >
       {/* Every word sits in the one grid cell, so the row is always as wide as
           the widest of them. Without this the hero reflows on each swap, and
           a word that paints a larger block than its predecessor becomes a new
@@ -38,11 +44,8 @@ export const FlipWords: FC<FlipWordsProps> = ({
         </span>
       ))}
 
-      <span
-        key={index}
-        className={twMerge("col-start-1 row-start-1", started && "flip-word")}
-      >
-        {words[index]}
+      <span key={index} className={twMerge("col-start-1 row-start-1", started && "flip-word")}>
+        <NeonText text={words[index]} />
       </span>
     </span>
   );
